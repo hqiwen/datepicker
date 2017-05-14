@@ -1,0 +1,72 @@
+.ul-datepicker-wrapper{
+    width: 240px;
+    font-size: 16px;
+    color: #666;
+    box-shadow: 2px 2px 8px 2px rgba(128, 128, 128, .3);
+    display: none;
+    position: absolute;
+}
+.ul-datepicker-wrapper-show{
+    display: block;
+}
+.ul-datepicker-wrapper .ul-datepicker-header{
+    height: 34px;
+    line-height: 34px;
+    padding: 0 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    background-color: navajowhite;
+}
+.ul-datepicker-wrapper .ul-datepicker-header a{
+    text-decoration: none;
+    width: 15px;
+    cursor: pointer;
+}
+.ul-datepicker-wrapper .ul-datepicker-header .ul-datepicker-prv-btn{
+    float: left;
+}
+.ul-datepicker-wrapper .ul-datepicker-header .ul-datepicker-next-btn{
+    float: right;
+}
+.ul-datepicker-wrapper .ul-datepicker-body table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.ul-datepicker-wrapper .ul-datepicker-body table th{
+    line-height: 24px;
+    height: 24px;
+    font-size: 10px;
+    text-align: center;
+}
+.ul-datepicker-wrapper .ul-datepicker-body table td{
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    cursor: pointer;
+    font-size: 14px;
+}
+.ul-datepicker-wrapper .ul-datepicker-body table td:hover{
+    background-color:lightcyan;
+}
+.ul-datepicker-today-show{
+    background-color: greenyellow;
+}
+.ul-datepicker-month-show{
+    background-color: lightgray;
+    opacity: .3;
+}
+
+.datepicker{
+    width:230px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+.datepicker:focus{
+    outline: 0 none;
+    border: 1px #1ab9c1 solid;
+}
