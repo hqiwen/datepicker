@@ -1,11 +1,11 @@
 (function () {
-    var datepicker = window.datepicker;
+    var datePicker = window.datepicker;
     var monthData;
     var $input;
 
-    datepicker.buildUI = function (year, month) {
+    datePicker.buildUI = function (year, month) {
 
-        monthData = datepicker.getMonthData(year, month);
+        monthData = datePicker.getMonthData(year, month);
         var html = '<div class="ul-datepicker-header">' +
             '    <a href="#" class="ul-datepicker-btn ul-datepicker-prv-btn">&lt</a>' +
             '    <a href="#" class="ul-datepicker-btn ul-datepicker-next-btn">&gt</a>' +
@@ -47,7 +47,7 @@
     };
 
 
-    datepicker.render = function (direction) {
+    datePicker.render = function (direction) {
 
         var year, month;
         if (monthData) {
@@ -64,9 +64,8 @@
         };
         if (direction === 'next') month++;
 
-        var html = datepicker.buildUI(year, month);
+        var html = datePicker.buildUI(year, month);
         $wrapper = document.querySelector('.ul-datepicker-wrapper')
-        // $dom.innerHTML = html;
         if (!$wrapper) {
             $wrapper = document.createElement('div');
             $wrapper.className = 'ul-datepicker-wrapper';
@@ -75,12 +74,11 @@
 
         document.body.appendChild($wrapper);
 
-        datepicker.show();
+        datePicker.show();
     }
 
-    datepicker.init = function (input) {
-        datepicker.render();
-        // datepicker.show();
+    datePicker.init = function (input) {
+        datePicker.render();
 
         var $input = document.querySelector(input);
         var isOpen = false;
@@ -106,9 +104,9 @@
                 return;
             if ($target.classList.contains('ul-datepicker-prv-btn')) {
                 // $wrapper.style.display = 'block';
-                datepicker.render('prev');
+                datePicker.render('prev');
             } else if ($target.classList.contains('ul-datepicker-next-btn')) {
-                datepicker.render('next');
+                datePicker.render('next');
             }
         }, false)
         //先调渲染函数，渲染之后月份加了一，再调监听函数导致相差一个月
@@ -141,7 +139,7 @@
         }
     }
 
-    datepicker.show = function() {
+    datePicker.show = function() {
         var today = new Date();
         var year = today.getFullYear();
         var month = today.getMonth() + 1;
@@ -158,7 +156,7 @@
                 $td[i].classList.add('ul-datepicker-month-show');
 
                 $td[i].addEventListener('click',function(){
-                    datepicker.render('next');//渲染数据没有错，但是与期望值相差一个月
+                    datePicker.render('next');
                 },false)
             }
         }
