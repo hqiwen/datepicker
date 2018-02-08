@@ -1,7 +1,5 @@
-(function () {
-    var datepicker = {};
-
-    datepicker.getMonthData = function (year, month) {
+define(function () {
+    var getMonthData = function (year, month) {
         var ret = [];
 
         if (!year || !month) {
@@ -54,5 +52,7 @@
         }
     }
 
-    window.datepicker = datepicker;
-})();
+    return {
+        getMonthData:getMonthData
+    }
+})

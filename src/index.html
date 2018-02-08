@@ -7,15 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>datepicker</title>
     <link rel="stylesheet" type="text/css" href="mian.css">
-    <script src="data.js"></script>
-    <script src="mian.js"></script>
+    <script src="require.js"></script>
 </head>
 
 <body>
     <input type="text" name="" value="" class="datepicker">
     
     <script>
-        datepicker.init('.datepicker');
+        require(['mian'],function(mian){
+            mian.init('.datepicker');
+        })
     </script>
 </body>
 
