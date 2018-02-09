@@ -1,5 +1,4 @@
 define(function() {
-  var monthData, year, month;
 
   function padding(num) {
     if (num > 9) {

@@ -1,6 +1,5 @@
 define(["data"], function(data) {
-monthData = data.getMonthData();
-  console.log(monthData)  
+  monthData = data.getMonthData();
   function buildUI(monthData) {
     var html =
       '<div class="ul-datepicker-header">' +
@@ -50,21 +49,20 @@ monthData = data.getMonthData();
         monthData.year--;
       }
     }
-      if (dir === "next") {
-          monthData.month++;
-          if (monthData.month === 13) {
-              monthData.month = 1;
-              monthData.year++;
-          }
+    if (dir === "next") {
+      monthData.month++;
+      if (monthData.month === 13) {
+        monthData.month = 1;
+        monthData.year++;
       }
+    }
   }
-    function render(dir) {
-        if (monthData) {
-            monthData = data.getMonthData(monthData.year, monthData.month);
-        }
+  function render(dir) {
+    if (monthData) {
+      monthData = data.getMonthData(monthData.year, monthData.month);
+    }
     direction(dir);
     var html = buildUI(monthData);
-    $wrapper = document.querySelector(".ul-datepicker-wrapper");
     if (!$wrapper) {
       $wrapper = document.createElement("div");
       $wrapper.className = "ul-datepicker-wrapper";
