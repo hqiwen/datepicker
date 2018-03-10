@@ -1,6 +1,14 @@
 # datepicker
 
-### 用法
+## 项目编写
+
+[项目编写的具体过程](./src/datepicker1.md)
+
+## 项目重构
+
+[项目重构和核心逻辑的提炼](./src/rebuild.md)
+
+## 用法
 
 1. 在HTML文件中引入[mian.css](./src/mian.css),[data.js](./src/data.js)和[mian.js](./src/mian.js)
 
@@ -18,7 +26,7 @@
 
      ```<input type="text" name="" value="" class="datepicker">```
 
-### 效果
+## 效果
 
 1. 点击输入框之前
 
