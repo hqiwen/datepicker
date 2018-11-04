@@ -1,4 +1,5 @@
-define(function() {
+define(["uilt"], function (uilt) {
+  //refactor the duplication code
     function getMonthData(year, month) {
         var ret = [];
 
@@ -49,46 +50,49 @@ define(function() {
     if (!year || !month) {
       var today = new Date();
       year = today.getFullYear();
-      month = today.getMonth() + 1;
-    }
-    var firstDay = new Date(year, month - 1, 1);
+      month = today.getMonth();
+    } 
+    var firstDay = new Date(year, month, 1);
     var firstDayWeekDay = firstDay.getDay();
     if (firstDayWeekDay === 0) firstDayWeekDay = 7;
 
     year = firstDay.getFullYear();
-    month = firstDay.getMonth() + 1;
+    month = firstDay.getMonth();
 
-    var lastDayOfLastMonth = new Date(year, month - 1, 0);
+    var lastDayOfLastMonth = new Date(year, month, 0);
     var lastDateOfLastMonth = lastDayOfLastMonth.getDate();
 
-    var preMonthDayCount = firstDayWeekDay - 1;
-
-    var lastDay = new Date(year, month, 0);
+    var lastDay = new Date(year, month + 1, 0);
     var lastDate = lastDay.getDate();
 
     for (var i = 0; i < 7 * 6; i++) {
-      var date = i + 1 - preMonthDayCount;
+      var date = i - firstDayWeekDay + 1;
       var showDate = date;
       var thisMonth = month;
 
       if (date <= 0) {
         thisMonth = month - 1;
         showDate = lastDateOfLastMonth + date;
+        continue;
       } else if (date > lastDate) {
         thisMonth = month + 1;
         showDate = showDate - lastDate;
+        continue;
       }
       if (thisMonth === 0) thisMonth = 12;
       if (thisMonth === 13) thisMonth = 1;
-      var addDate = new Date(year, month - 1, date);
+
+      var addDate = new Date(year, thisMonth, showDate);
       var intervalDays = Math.round((addDate.getTime() - firstDay.getTime()) / 86400000);
-      var weekDay = (intervalDays + firstDay.getDay()) % 7;
-      var weekIndex = Math.floor((intervalDays + firstDay.getDay()) / 7);
+      var weekDay = (intervalDays + firstDayWeekDay) % 7;
+      var weekIndex = Math.floor((intervalDays + firstDayWeekDay) / 7);
+      var fullDate = uilt.format(addDate);
 
       ret.push({
-        weekDay: weekDay,
-        weekIndex: weekIndex,
-        date: showDate
+          weekDay: weekDay,
+          weekIndex: weekIndex,
+          date: showDate,
+          fullDate: fullDate
       });
     }
     return ret;
