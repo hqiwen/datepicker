@@ -4,7 +4,7 @@ define(['data'], function (data) {
         const chart = new G2.Chart({
             container: mountId, // 指定图表容器 ID
             width: width, // 指定图表宽度
-            height: height
+            height: height,
         });
         console.log(monthData);
         chart.source(monthData, {
@@ -15,19 +15,38 @@ define(['data'], function (data) {
             weekIndex: {
                 type: "cat",
                 values: ["0", "1", "2", "3", "4", "5", "6"]
+            },
+            date: {
+                type:"cat"
+            },
+            fullDate: {
+                type: "time",
+                mask: 'YYYY-MM-DD'
             }
         });
+
         //TODO add text for chart
+        chart.axis("weekIndex", { label: null });
+        chart.legend(false);
         chart
-            .polygon()
+            .point()
+            .shape("square")
             .position("weekDay*weekIndex")
+            .size(7)
+            .color("date")
             .label("date", {
-                offset: 0,
-                textStyle: { fontSize: 14 }
-            }).style({
-                lineWidth: 1,
-                stroke: '#fff'
-            });
+                textStyle: {
+                    textAlign: "center", // 文本对齐方向，可取值为： start middle end
+                    fill: "#404040", // 文本的颜色
+                    fontSize: "14", // 文本大小
+                    fontWeight: "bold", // 文本粗细
+                    textBaseline: "middle"
+                },
+            })
+            .tooltip("date", function(date) {
+                return { name: "date", value: date };
+            })
+            .style({ lineWidth: 1, stroke: "gray" });
         chart.render();
     }
     return {
