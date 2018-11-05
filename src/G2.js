@@ -16,16 +16,12 @@ define(['data'], function (data) {
                 type: "cat",
                 values: ["0", "1", "2", "3", "4", "5", "6"]
             },
-            date: {
-                type:"cat"
-            },
             fullDate: {
                 type: "time",
                 mask: 'YYYY-MM-DD'
             }
         });
 
-        //TODO add text for chart
         chart.axis("weekIndex", { label: null });
         chart.legend(false);
         chart
@@ -36,15 +32,18 @@ define(['data'], function (data) {
             .color("date")
             .label("date", {
                 textStyle: {
-                    textAlign: "center", // 文本对齐方向，可取值为： start middle end
-                    fill: "#404040", // 文本的颜色
-                    fontSize: "14", // 文本大小
-                    fontWeight: "bold", // 文本粗细
+                    textAlign: "center",
+                    fill: "#404040",
+                    fontSize: "14",
+                    fontWeight: "bold",
                     textBaseline: "middle"
-                },
+                }
             })
-            .tooltip("date", function(date) {
-                return { name: "date", value: date };
+            .tooltip("fullDate", function (fullDate) {
+                return {
+                    name: "date",
+                    value: fullDate
+                }
             })
             .style({ lineWidth: 1, stroke: "gray" });
         chart.render();

@@ -1,5 +1,5 @@
 define(["uilt"], function (uilt) {
-  //refactor the duplication code
+  //TODO refactor the duplication code
     function getMonthData(year, month) {
         var ret = [];
 
