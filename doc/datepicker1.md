@@ -109,7 +109,7 @@ box-shadow,border,padding 要灵活的运用
 
 6. 结果展示
 
-![日历](./日历.jpg)
+![日历](./asset/日历.jpg)
 
 7. 改进和问题
 
@@ -136,5 +136,4 @@ box-shadow,border,padding 要灵活的运用
 
 结果
 
-![日历-1](./日历-1.jpg)
-
+![日历-1](./asset/日历-1.jpg)

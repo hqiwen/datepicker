@@ -2,11 +2,11 @@
 
 ## 项目编写
 
-[项目编写的具体过程](./src/datepicker1.md)
+[项目编写的具体过程](./doc/datepicker1.md)
 
 ## 项目重构
 
-[项目重构和核心逻辑的提炼](./src/rebuild.md)
+[项目重构和核心逻辑的提炼](./doc/rebuild.md)
 
 ## 用法
 
@@ -30,12 +30,12 @@
 
 1. 点击输入框之前
 
-![输入框](./src/images/3.jpg)
+![输入框](./doc/asset/images/3.jpg)
 
 2. 点击输入框之后
 
-![日历显示](./src/images/1.jpg)
+![日历显示](./doc/asset/images/1.jpg)
 
 3.切换月份
 
-![下一月](./src/images/2.jpg)
+![下一月](./doc/asset/images/2.jpg)

@@ -78,7 +78,7 @@ define(['data'], function(data) {
         document.body.appendChild($wrapper);
     }
 
-    retrun {
+    return {
         render: render
     }
 });
