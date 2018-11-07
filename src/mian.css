@@ -70,3 +70,10 @@
     outline: 0 none;
     border: 1px #1ab9c1 solid;
 }
+#month {
+    /* 与图表宽度保持一致 */
+    width: 600px;
+    position: relative;
+    text-align: center;
+    color: #1ab9c1;
+}

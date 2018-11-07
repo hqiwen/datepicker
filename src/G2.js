@@ -17,7 +17,7 @@ define(['data'], function (data) {
             },
             weekIndex: {
                 type: "cat",
-                values: ["0", "1", "2", "3", "4", "5", "6"]
+                values: ["0", "1", "2", "3", "4", "5"]
             },
             fullDate: {
                 type: "time",
@@ -80,6 +80,7 @@ define(['data'], function (data) {
                 id: 'nextMonth'
             }
         });
+        document.querySelector("#month").textContent = year + "-" + month;
         chart.render();
         // 事件监听
         chart.on('guide-text:click', ev => {
@@ -89,6 +90,7 @@ define(['data'], function (data) {
                     month = 12;
                     year = year -1;
                 }
+                document.querySelector("#month").textContent = year + "-" + month;
                 monthData = getMonthDataForG2(year, month).days;
                 chart.changeData(monthData);
             } else if (ev.appendInfo.id == "nextMonth") { 
@@ -97,6 +99,7 @@ define(['data'], function (data) {
                     month = 1;
                     year = year + 1;
                 }
+                document.querySelector("#month").textContent = year + "-" + month;;
                 monthData = getMonthDataForG2(year, month).days;
                 chart.changeData(monthData);
             }
