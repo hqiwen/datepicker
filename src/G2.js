@@ -1,9 +1,8 @@
 define(['data'], function (data) {
     var getMonthDataForG2 = data.getMonthDataForG2;
-    var monthData = getMonthDataForG2(2018, 0).days;
+    var monthData = getMonthDataForG2().days;
     var year = getMonthDataForG2().year;
     var month = getMonthDataForG2().month;
-    console.log(month);
     function createG2Instance(mountId,width,height) {
         const chart = new G2.Chart({
             container: mountId, // 指定图表容器 ID
@@ -23,9 +22,8 @@ define(['data'], function (data) {
             fullDate: {
                 type: "time",
                 mask: 'YYYY-MM-DD'
-            }
+            },
         });
-
         chart.axis("weekIndex", { label: null });
         chart.legend(false);
         chart
@@ -56,9 +54,9 @@ define(['data'], function (data) {
             position: prevMonthPoint,
             content: "上个月",
             style: {
-                fill: '#666', // 文本颜色
-                fontSize: '12', // 文本大小
-                fontWeight: 'bold' // 文本粗细
+                fill: '#666', 
+                fontSize: '12', 
+                fontWeight: 'bold' 
             },
             alignX: "left",
             alignY: "bottom",
@@ -71,9 +69,9 @@ define(['data'], function (data) {
             position: nextMonthPoint,
             content: "下个月",
             style: {
-                fill: '#666', // 文本颜色
-                fontSize: '12', // 文本大小
-                fontWeight: 'bold' // 文本粗细
+                fill: '#666', 
+                fontSize: '12', 
+                fontWeight: 'bold' 
             },
             alignX: "right",
             alignY: "bottom",
@@ -83,19 +81,25 @@ define(['data'], function (data) {
             }
         });
         chart.render();
+        // 事件监听
         chart.on('guide-text:click', ev => {
             if (ev.appendInfo.id == "prevMonth") { 
                 month = month - 1;
+                if (month === 0) {
+                    month = 12;
+                    year = year -1;
+                }
                 monthData = getMonthDataForG2(year, month).days;
-                console.log(monthData);
                 chart.changeData(monthData);
             } else if (ev.appendInfo.id == "nextMonth") { 
                 month = month + 1;
+                if (month === 13) {
+                    month = 1;
+                    year = year + 1;
+                }
                 monthData = getMonthDataForG2(year, month).days;
-                console.log(monthData);
                 chart.changeData(monthData);
             }
-            console.log('guide-text:click', ev.appendInfo);
         });
     }
     return {

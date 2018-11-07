@@ -51,7 +51,9 @@ define(["uilt"], function (uilt) {
       var today = new Date();
       year = today.getFullYear();
       month = today.getMonth();
-    } 
+    } else {
+      month = month - 1;
+    }
     var firstDay = new Date(year, month, 1);
     var firstDayWeekDay = firstDay.getDay();
     if (firstDayWeekDay === 0) firstDayWeekDay = 7;
@@ -79,8 +81,6 @@ define(["uilt"], function (uilt) {
         showDate = showDate - lastDate;
         continue;
       }
-      if (thisMonth === 0) thisMonth = 12;
-      if (thisMonth === 13) thisMonth = 1;
 
       var addDate = new Date(year, thisMonth, showDate);
       var intervalDays = Math.round((addDate.getTime() - firstDay.getTime()) / 86400000);
@@ -95,7 +95,8 @@ define(["uilt"], function (uilt) {
           fullDate: fullDate
       });
     }
-    return ret;
+    month = month + 1;
+    return { year: year, month: month, days: ret };
   }
   return { getMonthData: getMonthData, getMonthDataForG2: getMonthDataForG2 };
 });
