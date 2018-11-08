@@ -2,40 +2,36 @@
 
 ## 项目编写
 
-[项目编写的具体过程](./doc/datepicker1.md)
+[项目编写的具体过程](./doc/datepicker.md)
 
 ## 项目重构
 
-[项目重构和核心逻辑的提炼](./doc/rebuild.md)
+[核心逻辑的提炼,进行mvc分离](./doc/rebuild.md)
+
+[使用G2重构](./doc/rebuildInG2.md) **new**
 
 ## 用法
 
-1. 在HTML文件中引入[mian.css](./src/mian.css),[data.js](./src/data.js)和[mian.js](./src/mian.js)
+1. 在HTML文件中引入[main.css](./src/main.css),[data.js](./src/data.js)和[main.js](./src/main.js)
 
-        <link rel="stylesheet" type="text/css" href="mian.css">
+```html
+        <link rel="stylesheet" type="text/css" href="main.css">
         <script src="data.js"></script>
-        <script src="mian.js"></script>
+        <script src="main.js"></script>
+```
 
 2.  初始化datepicker
-    
+
+```js
         <script>
             datepicker.init('.datepicker');
         </script>
+```
 
-3. 挂载datepicker
+1. 挂载datepicker
 
      ```<input type="text" name="" value="" class="datepicker">```
 
 ## 效果
 
-1. 点击输入框之前
-
-![输入框](./doc/asset/images/3.jpg)
-
-2. 点击输入框之后
-
-![日历显示](./doc/asset/images/1.jpg)
-
-3.切换月份
-
-![下一月](./doc/asset/images/2.jpg)
+![日历](doc/datePicker.png)
