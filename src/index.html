@@ -6,7 +6,7 @@
     <meta name="viewport" content="device-width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>datepicker</title>
-    <link rel="stylesheet" type="text/css" href="mian.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
     <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g2-3.3.2/dist/g2.min.js"></script>
     <script src="require.js"></script>
 </head>
@@ -18,9 +18,9 @@
     <input type="text" name="" value="" class="datepicker">
     
     <script>
-        require(['mian','G2'],function(mian, G2) {
+        require(['main','G2'],function(main, G2) {
             G2.createG2Instance("mountId", 600, 400);
-            mian.init('.datepicker');
+            main.init('.datepicker');
         })
     </script>
 </body>

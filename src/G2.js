@@ -1,15 +1,14 @@
-define(['data'], function (data) {
+define(["data"], function(data) {
     var getMonthDataForG2 = data.getMonthDataForG2;
     var monthData = getMonthDataForG2().days;
     var year = getMonthDataForG2().year;
     var month = getMonthDataForG2().month;
-    function createG2Instance(mountId,width,height) {
+    function createG2Instance(mountId, width, height) {
         const chart = new G2.Chart({
-            container: mountId, // 指定图表容器 ID
-            width: width, // 指定图表宽度
-            height: height,
+            container: mountId,
+            width: width,
+            height: height
         });
-        console.log(monthData);
         chart.source(monthData, {
             weekDay: {
                 type: "cat",
@@ -21,8 +20,8 @@ define(['data'], function (data) {
             },
             fullDate: {
                 type: "time",
-                mask: 'YYYY-MM-DD'
-            },
+                mask: "YYYY-MM-DD"
+            }
         });
         chart.axis("weekIndex", { label: null });
         chart.legend(false);
@@ -41,65 +40,67 @@ define(['data'], function (data) {
                     textBaseline: "middle"
                 }
             })
-            .tooltip("fullDate", function (fullDate) {
+            .tooltip("fullDate", function(fullDate) {
                 return {
                     name: "date",
                     value: fullDate
-                }
+                };
             })
             .style({ lineWidth: 1, stroke: "gray" });
-        const nextMonthPoint = [4.5, -2.2]
-        const prevMonthPoint = [0.5, -2.2]
+        const nextMonthPoint = [4.5, -2.2];
+        const prevMonthPoint = [0.5, -2.2];
         chart.guide().text({
             position: prevMonthPoint,
             content: "上个月",
             style: {
-                fill: '#666', 
-                fontSize: '12', 
-                fontWeight: 'bold' 
+                fill: "#666",
+                fontSize: "12",
+                fontWeight: "bold"
             },
             alignX: "left",
             alignY: "bottom",
             offsetX: 10,
             appendInfo: {
-                id: 'prevMonth',
+                id: "prevMonth"
             }
         });
         chart.guide().text({
             position: nextMonthPoint,
             content: "下个月",
             style: {
-                fill: '#666', 
-                fontSize: '12', 
-                fontWeight: 'bold' 
+                fill: "#666",
+                fontSize: "12",
+                fontWeight: "bold"
             },
             alignX: "right",
             alignY: "bottom",
             offsetX: 10,
             appendInfo: {
-                id: 'nextMonth'
+                id: "nextMonth"
             }
         });
         document.querySelector("#month").textContent = year + "-" + month;
         chart.render();
         // 事件监听
-        chart.on('guide-text:click', ev => {
-            if (ev.appendInfo.id == "prevMonth") { 
+        chart.on("guide-text:click", ev => {
+            if (ev.appendInfo.id == "prevMonth") {
                 month = month - 1;
                 if (month === 0) {
                     month = 12;
-                    year = year -1;
+                    year = year - 1;
                 }
-                document.querySelector("#month").textContent = year + "-" + month;
+                document.querySelector("#month").textContent =
+                    year + "-" + month;
                 monthData = getMonthDataForG2(year, month).days;
                 chart.changeData(monthData);
-            } else if (ev.appendInfo.id == "nextMonth") { 
+            } else if (ev.appendInfo.id == "nextMonth") {
                 month = month + 1;
                 if (month === 13) {
                     month = 1;
                     year = year + 1;
                 }
-                document.querySelector("#month").textContent = year + "-" + month;;
+                document.querySelector("#month").textContent =
+                    year + "-" + month;
                 monthData = getMonthDataForG2(year, month).days;
                 chart.changeData(monthData);
             }
@@ -107,5 +108,5 @@ define(['data'], function (data) {
     }
     return {
         createG2Instance: createG2Instance
-    }
+    };
 });

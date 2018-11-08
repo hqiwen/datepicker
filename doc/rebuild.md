@@ -109,7 +109,7 @@ define(['render'],function(render){
 })
 ```
 
-### mian.js
+### main.js
 
 项目的入口，实行项目的初始化，提供可供用户操作的接口。
 
