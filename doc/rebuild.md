@@ -131,7 +131,7 @@ define(["render","event"],function(render,event){
 
 ## 模块依赖
 
-![模块依赖](./模块.png)
+![模块依赖](./asset/模块.png)
 
 ## 总结
 
